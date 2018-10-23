@@ -17,5 +17,6 @@ services:
         - ./apache/logs:/usr/local/apache2/logs # データの永続化
         - ./apache/html:/usr/local/apache2/htdocs # データの永続化
         - ./apache/cgi-bin:/usr/local/apache2/cgi-bin # データの永続化
+        - ./apache/RPG:/usr/local/apache2/RPG # データの永続化
       links:
         - mysql
