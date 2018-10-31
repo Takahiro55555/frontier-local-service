@@ -1,0 +1,3 @@
+[submodule "apache/RPG"]
+	path = apache/RPG
+	url = https://github.com/korosuke613/rpg-local-for-ubuntu.git
