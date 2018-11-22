@@ -11,4 +11,20 @@ RUN cpanm SVG
 RUN apt-get update && \
     apt-get install clustalw
 
+RUN cpanm DBI
+RUN cpanm HTML::Template
+RUN cpanm Data::Dumper
+RUN cpanm Date::Simple
+
+RUN apt-get update \
+    && apt-get install -y \
+    pkg-config \
+    libgd-dev
+
+RUN cpanm GD
+
+RUN apt-get install -y libmysqlclient-dev 
+
+RUN cpanm DBD::mysql
+
 COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
