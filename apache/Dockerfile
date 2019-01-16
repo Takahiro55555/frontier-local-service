@@ -23,7 +23,9 @@ RUN apt-get update \
 
 RUN cpanm GD
 
-RUN apt-get install -y libmysqlclient-dev 
+# デフォルトでインストールされるようになったらしい
+# https://jumpyoshim.hatenablog.com/entry/the-solution-that-libmysqlclient-dev-has-no-installation-candidate
+RUN apt-get install -y default-libmysqlclient-dev 
 
 RUN cpanm DBD::mysql
 
