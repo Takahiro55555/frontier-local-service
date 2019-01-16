@@ -12,7 +12,7 @@ services:
       build:
         context: ./apache/
       ports:
-        - "80:80"
+        - "3333:80"
       volumes:
         - ./apache/logs:/usr/local/apache2/logs # データの永続化
         - ./apache/html:/usr/local/apache2/htdocs # データの永続化
