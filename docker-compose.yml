@@ -1,12 +1,18 @@
-version: '2'
+version: '3'
 services:
   mysql:
     build: ./mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_USER=mysql_user
+      - MYSQL_PASSWORD=riboribo
+      - MYSQL_MY_DATABASE=snodb
+    ports:
+      - 33306:3306
     volumes:
       - ./mysql/mysql_data:/var/lib/mysql # データの永続化
-      - ./mysql/sqls:/docker-entrypoint-initdb.d # 初期データ投入
-    environment:
-      - MYSQL_ROOT_PASSWORD="pass" #rootパスワードの設定
+      - ./mysql/init:/docker-entrypoint-initdb.d # 初期データ投入
+    restart: always
 
   apache:
       build:
@@ -18,5 +24,8 @@ services:
         - ./apache/html:/usr/local/apache2/htdocs # データの永続化
         - ./apache/cgi-bin:/usr/local/apache2/cgi-bin # データの永続化
         - ./apache/RPG:/usr/local/apache2/RPG # データの永続化
-      links:
+      depends_on:
         - mysql
+      environment:
+        - PERL_MYSQL_HOST=mysql:3306
+      restart: always
