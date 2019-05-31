@@ -1,10 +1,10 @@
 $SNOPY_BACKUP="C:\Users\RPGLocal2018\iCloudDrive\backup\database_snopy"
-$DAYS=9
+$DAYS=5
 
 $file_count = (Get-ChildItem $SNOPY_BACKUP | ? { ! $_.PsIsContainer }).Count
 
 # 古いファイルの削除
-if( $file_count -ge 32 ){
+if( $file_count -ge 7 ){
     Get-ChildItem $SNOPY_BACKUP -Recurse | Where-Object {($_.Mode -eq "-a----") -and ($_.CreationTime -lt (Get-Date).AddDays(-1 * $DAYS))} | Remove-Item -force
 }
 
