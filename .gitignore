@@ -2,3 +2,4 @@ mysql_data/
 access_log
 httpd.pid
 error.log
+*.gz
