@@ -9,7 +9,7 @@ if( $file_count -ge 7 ){
 }
 
 # データベースのバックアップ
-$PORT=33306
+$PORT=3306
 $HOST_NAME="localhost"
 $DAY=Get-Date -UFormat "%Y-%m-%d"
 $FILE_NAME="backup_local" + $DAY + ".dump.gz"
@@ -18,7 +18,6 @@ Write-Output $FILE_PATH
 
 mysqldump `
     -u mysql_user `
-    --password=riboribo `
     -h $HOST_NAME `
     -P $PORT `
     --default-character-set=utf8 `
