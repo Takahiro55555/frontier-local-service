@@ -1,6 +1,8 @@
-# docker apache perl mysql
+# frontier-public-service
 
 ## 概要
+Frontierが提供するサービスをDockerコンテナに閉じ込めたリポジトリ
+
 
 ### ディレクトリ構成
 各ディレクトリは以下のような構成になっている。
